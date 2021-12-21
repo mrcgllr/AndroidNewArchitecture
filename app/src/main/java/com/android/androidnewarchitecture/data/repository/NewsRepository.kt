@@ -12,11 +12,10 @@ class NewsRepository @Inject constructor(private val newsService: NewsService) {
 
     val newsCachedData = mutableListOf<Article>()
 
-    suspend fun getNews(){
-        withContext(Dispatchers.IO){
-            newsCachedData.clear()
-            newsCachedData.addAll(newsService.getArticles().articles)
-            return@withContext newsCachedData
-        }
+    suspend fun getNews(): List<Article> = withContext(Dispatchers.IO) {
+        newsCachedData.clear()
+        newsCachedData.addAll(newsService.getArticles().articles)
+        return@withContext newsCachedData
     }
+
 }

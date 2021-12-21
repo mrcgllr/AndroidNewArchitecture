@@ -1,0 +1,7 @@
+package com.android.androidnewarchitecture.data.model
+
+data class NewsResponse(
+    val articles: List<Article>,
+    val status: String,
+    val totalResults: Int
+)
